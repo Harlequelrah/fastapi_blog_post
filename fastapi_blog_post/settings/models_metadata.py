@@ -1,11 +1,17 @@
-from fastapi_blog_post.blog_post.models import metadata as myapp_metadata
-from fastapi_blog_post.loggerapp.log_model import metadata as myapp2_metadata
-from fastapi_blog_post.userapp.user_models import metadata as myapp3_metadata
-from sqlalchemy import MetaData
-from .database import Base
-target_metadata = MetaData()
+from blog_post.models import BlogPost
+from settings.auth.models import (
+    LogModel,
+    Role,
+    RolePrivilege,
+    User,
+    UserPrivilege,
+    UserRole,
+)
 
-target_metadata = Base.metadata
-target_metadata = myapp_metadata
-target_metadata = myapp2_metadata
-target_metadata = myapp3_metadata
+from settings.logger.model import LogModel
+from settings.database import Base, database  # à importer en dernier
+
+# from settings.logger.model import LogModel
+
+
+database.create_tables(target_metadata=Base.metadata)

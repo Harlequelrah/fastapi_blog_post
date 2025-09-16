@@ -1,35 +1,27 @@
-from fastapi import FastAPI
-from elrahapi.middleware.log_middleware import LoggerMiddleware
-from fastapi_blog_post.settings.database import engine, authentication
-from fastapi_blog_post.settings.models_metadata import target_metadata
+from blog_post.router import blog_post_router
 from elrahapi.middleware.error_middleware import ErrorHandlingMiddleware
-from fastapi_blog_post.blog_post.router import app_blog_post
-from fastapi_blog_post.loggerapp.log_router import app_logger
-from fastapi_blog_post.userapp.user_routers import app_privilege,app_role,app_role_privilege,app_user_privilege,app_user
-from fastapi_blog_post.loggerapp.log_model import Logger
-app = FastAPI()
+from settings.auth.configs import authentication_router
+from settings.auth.routers import role_router, user_role_router, user_router
 
-target_metadata.create_all(bind=engine)
+# from myapp.router import myapp_router
+from settings.database import database
+
+from fastapi import FastAPI
+
+app = FastAPI(root_path="/api")
+app.include_router(authentication_router)
+app.include_router(blog_post_router)
+app.include_router(user_router)
+app.include_router(role_router)
+app.include_router(user_role_router)
+
 
 @app.get("/")
 async def hello():
-    return {"message":"hello"}
-app.include_router(app_blog_post)
-app.include_router(app_logger)
-app.include_router(app_user)
-app.include_router(app_privilege)
-app.include_router(app_role)
-app.include_router(app_role_privilege)
-app.include_router(app_user_privilege)
+    return {"message": "hello"}
+
+
+# app.include_router(myapp_router)
 app.add_middleware(
     ErrorHandlingMiddleware,
-    LoggerMiddlewareModel=Logger,
-    session_factory=authentication.session_factory
-)
-
-app.add_middleware(
-    LoggerMiddleware,
-    LoggerMiddlewareModel=Logger,
-    session_factory=authentication.session_factory
-
 )
