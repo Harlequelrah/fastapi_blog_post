@@ -1,12 +1,12 @@
 # Description
 
-Ceci est un projet backend d'API .
+Ceci est un projet backend d'API destiné à un frontend Angular.
 
 ## Installation
 
 - **Avec Github :**
   ```bash
-  git clone https://github.com/
+  git clone https://github.com/Harlequelrah/fastapi_blog_post
   ```
 
 ## Utilisation
@@ -17,32 +17,38 @@ Ceci est un projet backend d'API .
   cd monprojet
 ```
 
--  **Création d'un environnement virtuel :**
+- **Création d'un environnement virtuel :**
+
 ```bash
   python -m venv env
 ```
+
 ou
+
 ```bash
   virtualenv env
 ```
 
--  **Installation des dépendances :**
+- **Installation des dépendances :**
+
 ```bash
   pip install -r requirements.txt
 ```
 
--  **Initialisation des variables d'environnement :**
+- **Initialisation des variables d'environnement :**
+
 ```bash
   cp .env.example .env
 ```
 
--  **Initialisation d'alembic (Optionnel) :**
+- **Initialisation d'alembic (Optionnel) :**
+
 ```python
   alembic init alembic
 ```
 
-
 - **Lancement du serveur :**
+
 ```python
   elrahapi run
 ```
@@ -59,12 +65,12 @@ ou
 
 - Models :
 
-  -
+  - BlogPost
 
 # Contact ou Support
 
 Pour des questions ou du support, contactez-moi .
 
-- **`Mail`** : **user@example.com**
+- **`Mail`** : **maximeatsoudegbovi@gmail.com**
 
-- **`Telephone`** : ****
+- **`Telephone`** : **+228 91361029**
