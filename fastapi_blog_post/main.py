@@ -1,10 +1,12 @@
 from blog_post.router import blog_post_router
 from elrahapi.middleware.error_middleware import ErrorHandlingMiddleware
+from elrahapi.middleware.log_middleware import LoggerMiddleware
 from settings.auth.configs import authentication_router
 from settings.auth.routers import role_router, user_role_router, user_router
 
 # from myapp.router import myapp_router
 from settings.database import database
+from settings.logger.router import middleware_helper
 
 from fastapi import FastAPI
 
@@ -22,6 +24,5 @@ async def hello():
 
 
 # app.include_router(myapp_router)
-app.add_middleware(
-    ErrorHandlingMiddleware,
-)
+app.add_middleware(ErrorHandlingMiddleware, middleware_helper=middleware_helper)
+app.add_middleware(LoggerMiddleware, middleware_helper=middleware_helper)

@@ -1,19 +1,20 @@
+from blog_post.utils import Status
 from fastapi_blog_post.settings.database import Base
 from sqlalchemy import (
     DECIMAL,
     Boolean,
     Column,
     DateTime,
+    Enum,
     ForeignKey,
     Integer,
     String,
     Table,
     Text,
-    Enum
 )
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
-from blog_post.enums import Status
+
 
 class BlogPost(Base):
     __tablename__ = "blogposts"

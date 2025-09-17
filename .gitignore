@@ -6,3 +6,4 @@ __pycache__/
 alembic.ini
 *.db
 *.log
+alembic.ini

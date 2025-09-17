@@ -1,6 +1,6 @@
+from blog_post.utils import Status
 from pydantic import BaseModel, Field
 
-from blog_post.enums import Status
 
 class BlogPostBaseModel(BaseModel):
     title: str = Field(example="debut de angular")
